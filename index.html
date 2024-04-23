@@ -282,7 +282,9 @@
                             <div class="content has-text-justified">
                                 <p>
                                   Semantic occupancy prediction results on nuScenes-Occupancy validation set. The C,D,L,M denotes camera, depth, LiDAR and multi-modal. 
-                                  Best camera-only, LiDAR-only, and multi-modal results are marked red, blue, and black, respectively.
+                                  Best camera-only, LiDAR-only, and multi-modal results are marked red, blue, and black, respectively. Observations show that OccGen 
+                                  outperforms all existing competitors, regardless of whether the camera-only, LiDAR-only, or multi-modal methods, which demonstrates 
+                                  the effectiveness of OccGen for semantic occupancy prediction.
                                 </p>
                             </div>
 
@@ -291,9 +293,24 @@
                             </div>
                             <div class="content has-text-justified">
                                 <p>
-                                  Semantic Scene Completion results on SemanticKITTI validation set.} &dagger denotes the results provided by MonoScene.
+                                  Semantic Scene Completion results on SemanticKITTI validation set.} &dagger denotes the results provided by MonoScene. The results show
+                                  that OccGen achieves the highest mIoU compared with all existing competitors.
                                 </p>
                             </div>
+
+                          <div>
+                                <td colspan="2"><img src="pics/vis.png" alt="" width="1000" /></td>
+                            </div>
+                            <div class="content has-text-justified">
+                                <p>
+                                  Qualitative results of the 3D semantic occupancy predictions on nuScenes-Occupancy. The leftmost column shows the input surrounding images,
+                                  and the following four columns visualize the 3D semantic occupancy results from the ground truth, CONet, OccGen(step1), and OccGen(step2).
+                                  The regions highlighted by rectangles indicate that these areas have obvious differences (better viewed when zoomed in). It is obvious that 
+                                  the regions of ``drivable surface'' and ``sidewalk'' predicted by our OccGen have higher continuity and integrity, and can effectively reduce
+                                  a large number of hole areas compared with CONet.
+                                </p>
+                            </div>
+                          
                         </div>
                     </div>
     </section>
