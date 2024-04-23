@@ -139,8 +139,23 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Existing solutions for 3D semantic occupancy prediction typically treat the task as a one-shot 3D voxel-wise segmentation perception problem. These discriminative methods focus on learning the mapping between the inputs and occupancy map in a single step, lacking the ability to gradually refine the occupancy map and the reasonable scene imaginative capacity to complete the local regions somewhere. 
-  In this paper, we introduce OccGen, a simple yet powerful generative perception model for the task of 3D semantic occupancy prediction. OccGen adopts a ``noise-to-occupancy'' generative paradigm, progressively inferring and refining the occupancy map by predicting and eliminating noise originating from a random Gaussian distribution. OccGen consists of two main components: a conditional encoder that is capable of processing multi-modal inputs, and a progressive refinement decoder that applies diffusion denoising using the multi-modal features as conditions.  A key insight of this generative pipeline is that the diffusion denoising process is naturally able to model the coarse-to-fine refinement of the dense 3D occupancy map, therefore producing more detailed predictions. Extensive experiments on several occupancy benchmarks demonstrate the effectiveness of the proposed method compared to the state-of-the-art methods. For instance,  OccGen relatively enhances the mIoU by  9.5\%, 6.3\%, and 13.3\% on nuScenes-Occupancy dataset under the muli-modal, LiDAR-only, and camera-only settings, respectively. Moreover, as a generative perception model, OccGen exhibits desirable properties that discriminative models cannot achieve, such as providing uncertainty estimates alongside its multiple-step predictions.
+            Existing solutions for 3D semantic occupancy prediction typically treat the task as a one-shot 
+            3D voxel-wise segmentation perception problem. These discriminative methods focus on learning 
+            the mapping between the inputs and occupancy map in a single step, lacking the ability to 
+            gradually refine the occupancy map and the reasonable scene imaginative capacity to complete 
+            the local regions somewhere. In this paper, we introduce OccGen, a simple yet powerful generative
+            perception model for the task of 3D semantic occupancy prediction. OccGen adopts a 
+            ``noise-to-occupancy'' generative paradigm, progressively inferring and refining the occupancy map
+            by predicting and eliminating noise originating from a random Gaussian distribution. OccGen consists
+            of two main components: a conditional encoder that is capable of processing multi-modal inputs, and 
+            a progressive refinement decoder that applies diffusion denoising using the multi-modal features as 
+            conditions.  A key insight of this generative pipeline is that the diffusion denoising process is 
+            naturally able to model the coarse-to-fine refinement of the dense 3D occupancy map, therefore producing
+            more detailed predictions. Extensive experiments on several occupancy benchmarks demonstrate the effectiveness
+            of the proposed method compared to the state-of-the-art methods. For instance,  OccGen relatively enhances the 
+            mIoU by  9.5%, 6.3%, and 13.3% on nuScenes-Occupancy dataset under the muli-modal, LiDAR-only, and camera-only 
+            settings, respectively. Moreover, as a generative perception model, OccGen exhibits desirable properties that
+            discriminative models cannot achieve, such as providing uncertainty estimates alongside its multiple-step predictions.
           </p>
         </div>
       </div>
@@ -189,8 +204,62 @@
                             </div>
                             <div class="content has-text-justified">
                                 <p>
-                                    The proposed OccGen framework. It has an encoder-decoder structure. The conditional encoder extracts the features from the inputs as the condition. The progressive refinement decoder consists of a stack of refinement layers and an occupancy head, which takes the 3D noise map, sampling step, and conditional multi-scale fusion features as inputs and progressively generates the occupancy prediction.
+                                  The proposed OccGen framework. It has an encoder-decoder structure. The conditional encoder extracts the features 
+                                  from the inputs as the condition. The progressive refinement decoder consists of a stack of refinement layers and 
+                                  an occupancy head, which takes the 3D noise map, sampling step, and conditional multi-scale fusion features as 
+                                  inputs and progressively generates the occupancy prediction.
                                 </p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+    </section>
+
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-">
+                        <h2 class="title is-3">Conditional Encoder</h2>
+                        <div class="content has-text-justified">
+
+
+
+                            <div>
+                                <td colspan="3"><img src="pics/encoder.png" alt="" width="1000" /></td>
+                            </div>
+                            <div class="content has-text-justified">
+                                <p>
+                                  The conditional encoder consists of three main components: a multi-modal encoder, a fusion module,
+                                  and an occupancy backbone. As shown in the above figure, the multi-modal encoder is a two-stream 
+                                  structure, comprising of LiDAR and camera streams. 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+    </section>
+
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-">
+                        <h2 class="title is-3">Progressive Refinement Decoder</h2>
+                        <div class="content has-text-justified">
+
+
+
+                            <div>
+                                <td colspan="3"><img src="pics/decoder.png" alt="" width="1000" /></td>
+                            </div>
+                            <div class="content has-text-justified">
+                                <p>
+                                  The progressive refinement decoder of OccGen consists of a stack of refinement
+                                  layers and an occupancy head. As illustrated in the above figure, the refinement
+                                  layer takes as input the random noise map or the predicted noise map from the 
+                                  last step, the current sampling step $t$, and the multi-scale fusion features. 
+                                  The refinement layer utilizes efficient 3D deformable cross-attention and 
+                                  self-attention to refine the 3D Gaussian noise map.
                                 </p>
                             </div>
                         </div>
